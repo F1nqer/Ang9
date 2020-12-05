@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Vagon} from "./Vagon";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CarriageService {
   private url = "/api/vagons";
 

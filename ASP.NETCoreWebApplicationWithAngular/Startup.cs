@@ -20,9 +20,9 @@ namespace ASP.NETCoreWebApplicationWithAngular
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            string connectionString = "Server=(localdb)\\mssqllocaldb;Database=vagonssdb;Trusted_Connection=True;";
+        public void ConfigureServices(IServiceCollection services){
+        string connectionString = "Server=(localdb)\\mssqllocaldb;Database=vagons3sdb;Trusted_Connection=True;";
+            string connectionString2 = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
             services.AddControllers();
             services.AddControllersWithViews();

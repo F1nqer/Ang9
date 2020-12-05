@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ASP.NETCoreWebApplicationWithAngular.Controllers
 {
     [ApiController]
-    [Route("api/products")]
+    [Route("api/vagons")]
     public class VagonsController : Controller
     {
         ApplicationContext db;
@@ -17,11 +17,11 @@ namespace ASP.NETCoreWebApplicationWithAngular.Controllers
             if (!db.Vagons.Any())
             {
                 db.Vagons.Add(new Vagon
-                    {Num = 98765431, Mannufacturer = "Hyundai", Statement = "Good", Type = "Крытый вагон"});
+                    {Num = 98765431, Manufacturer = "Hyundai", Statement = "Good"});
                 db.Vagons.Add(new Vagon
-                    {Num = 98765431, Mannufacturer = "Oibai", Statement = "Good", Type = "Свободный вагон"});
+                    {Num = 98765431, Manufacturer = "Oibai", Statement = "Good"});
                 db.Vagons.Add(new Vagon
-                    {Num = 98765431, Mannufacturer = "Hyundai", Statement = "Good", Type = "Крытый вагон"});
+                    {Num = 98765431, Manufacturer = "Hyundai", Statement = "Good"});
                 db.SaveChanges();
             }
         }
@@ -44,6 +44,8 @@ namespace ASP.NETCoreWebApplicationWithAngular.Controllers
         {
             if (ModelState.IsValid)
             {
+                VagonType check = new VagonType(vagon.Num);
+                vagon.Type = check.Description;
                 db.Vagons.Add(vagon);
                 db.SaveChanges();
                 return Ok(vagon);
@@ -57,6 +59,9 @@ namespace ASP.NETCoreWebApplicationWithAngular.Controllers
         {
             if (ModelState.IsValid)
             {
+                VagonType check = new VagonType(vagon.Num);
+                vagon.Type = check.Description;
+                db.Vagons.Add(vagon);
                 db.Update(vagon);
                 db.SaveChanges();
                 return Ok(vagon);
