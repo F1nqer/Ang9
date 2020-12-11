@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Vagon} from "../Vagon";
-import {CarriageService} from "../carriage.service";
+import {Book} from "../shared/Book";
+import {CarriageService} from "../services/carriage.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CarriageValidatorService} from "../carriage-validator.service";
+import {CarriageValidatorService} from "../services/carriage-validator.service";
 
 @Component({
   selector: 'app-vagon-form',
@@ -11,13 +11,14 @@ import {CarriageValidatorService} from "../carriage-validator.service";
   providers: [CarriageService]
 })
 export class VagonFormComponent implements OnInit {
-  vagon: Vagon = new Vagon();
-  actionVagon: Vagon;
+  book: Book = new Book();
+  editCheck: boolean = true;
+  actionVagon: Book;
   manufacturer: string;
   num: string;
   statement: string;
   type: string;
-  vagons: Vagon[];
+  vagons: Book[];
   sum: number;
   checksum: number;
   check = 0;
@@ -25,7 +26,7 @@ export class VagonFormComponent implements OnInit {
   statements = ['Good', 'Broken', 'In repairing', 'Can use'];
   myForm: FormGroup;
   VagonEditForm: FormGroup;
-  editVagonShow: Vagon;
+  editVagonShow: Book;
   editVagon: FormControl;
   addVagon: FormControl;
   tableMode: boolean = true; // табличный режим
@@ -36,39 +37,41 @@ export class VagonFormComponent implements OnInit {
 
   ngOnInit() {
     this.loadProducts();
-    this.addVagon = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)], this.carriAgeValidatorService.VagonNumValidator());
-    this.editVagon = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)], this.carriAgeValidatorService.VagonNumValidator());
+    // this.addVagon = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)], this.carriAgeValidatorService.VagonNumValidator());
+    // this.editVagon = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(8)], this.carriAgeValidatorService.VagonNumValidator());
 
   }
 
   loadProducts() {
     this.carriageService.getProducts()
-      .subscribe((data: Vagon[]) => this.vagons = data);
+      .subscribe((data: Book[]) => this.vagons = data);
   }
   // сохранение данных
   save() {
-    if (this.vagon.id == null) {
-      this.carriageService.createProduct(this.vagon)
-        .subscribe((data: Vagon) => this.vagons.push(data));
+    if (this.book.bookID == null) {
+      this.carriageService.createProduct(this.book)
+        .subscribe((data: Book) => this.vagons.push(data));
     } else {
-      this.carriageService.updateProduct(this.vagon)
+      this.carriageService.updateProduct(this.book)
         .subscribe(data => this.loadProducts());
     }
     this.cancel();
   }
-  editProduct(p: Vagon) {
-    this.vagon = p;
+  editProduct(p: Book) {
+    this.editCheck= false;
+    this.book = p;
   }
   cancel() {
-    this.vagon = new Vagon();
+    this.book = new Book();
     this.tableMode = true;
   }
-  delete(p: Vagon) {
-    this.carriageService.deleteProduct(p.id)
+  delete(p: Book) {
+    this.carriageService.deleteProduct(p.bookID)
       .subscribe(data => this.loadProducts());
   }
   add() {
     this.cancel();
+    this.editCheck = true;
     this.tableMode = false;
   }
 }

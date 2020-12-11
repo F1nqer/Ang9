@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Лабораторная 9</a>
+      <a class="navbar-brand" [routerLink]="['/']">Book store</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -29,17 +29,27 @@
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Инкрементация</a
+              >Корзина</a
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Считывание данных</a
+              >Контакты</a
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/vagon-form']"
-            >Вагоны</a
+            >Редактирование товаров</a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/ordershowing']"
+            >Все заказы</a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/booksmarket']"
+            >Витрина книг</a
             >
           </li>
         </ul>

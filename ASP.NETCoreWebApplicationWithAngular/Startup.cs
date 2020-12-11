@@ -1,12 +1,15 @@
+using System;
 using ASP.NETCoreWebApplicationWithAngular.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
+// using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pomelo.EntityFrameworkCore.MySql;
 
 namespace ASP.NETCoreWebApplicationWithAngular
 {
@@ -21,9 +24,11 @@ namespace ASP.NETCoreWebApplicationWithAngular
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services){
-        string connectionString = "Server=(localdb)\\mssqllocaldb;Database=vagons3sdb;Trusted_Connection=True;";
-            string connectionString2 = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
+        // string connectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
+        string mariaConnection = "Server=127.0.0.1; User Id=root;Password=RetroLOL1;Database=bookstore3";
+            services.AddDbContext<ApplicationContext>(options => options.UseMySql(mariaConnection, new MySqlServerVersion(new Version(8, 0, 11))
+                )
+            );
             services.AddControllers();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory

@@ -4,3 +4,16 @@
 <h3>Work in DB</h3>
 <h3>HTTP</h3>
 <h4>Good luck!</h4>
+<div *ngFor="let u of users">
+  <p>{{u.username}} and {{u.type}}</p>
+</div>
+<div *ngFor="let u of orders">
+  <p>{{u.city}}</p>
+<!--  <p>{{u.ordersBooks[0].OrderID}}</p>-->
+  <div *ngFor="let v of ordersbooks">
+    <div *ngIf="u.orderID==v.orderID"><p>{{v.book.name}}</p></div>
+  </div>
+</div>
+<div *ngFor="let ob of ordersbooks">
+  <p>{{ob.book.author}}</p>
+</div>

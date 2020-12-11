@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Vagon} from "./Vagon";
-import {CarriageService} from "./carriage.service";
+import {Book} from "./shared/Book";
+import {CarriageService} from "./services/carriage.service";
 
 
 @Component({
