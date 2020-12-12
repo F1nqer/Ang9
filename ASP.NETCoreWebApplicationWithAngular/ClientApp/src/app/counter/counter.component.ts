@@ -4,19 +4,23 @@ import {CarriageService} from "../services/carriage.service";
 import {Book} from "../shared/Book";
 import {bucket} from "../shared/Bucket";
 import {HttpClient} from "@angular/common/http";
+import {BucketService} from "../services/books.service";
+import {BucketBook} from "../shared/BucketBook";
 
 @Component({
   selector: 'app-counter-component',
   templateUrl: './counter.component.html',
-  providers: [OrdersService, CarriageService]
+  providers: [BucketService]
 })
 export class CounterComponent {
-  books: Book[];
-
-  constructor(private http: HttpClient) {
+  books: BucketBook[];
+  loadBucket(){
+    this.bucketService.getProducts()
+      .subscribe((data:BucketBook[])=>this.books = data);
+  }
+  constructor(private bucketService: BucketService) {
   }
   ngOnInit(){
-    this.http.get('assets/user.json')
-      .subscribe((data:Book[])=>this.books=data);
+    this.loadBucket()
   }
 }

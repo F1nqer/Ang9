@@ -3,28 +3,26 @@ import {Book} from "../shared/Book";
 import {CarriageService} from "../services/carriage.service";
 import {bucket} from "../shared/Bucket";
 import {HttpClient} from "@angular/common/http";
+import {BucketService} from "../services/books.service";
 @Component({
   selector: 'app-booksmarket',
   templateUrl: './booksmarket.component.html',
   styleUrls: ['./booksmarket.component.css'],
-  providers: [CarriageService]
+  providers: [BucketService, CarriageService]
 })
 export class BooksmarketComponent implements OnInit {
   books: Book[];
-  bucketbooks: Book[];
+  bucket(book:Book){
+    this.bucketService.createProduct(book);
+  }
   loadBooks(){
     this.carriageService.getProducts()
-      .subscribe((data:Book[])=>this.books = data);
+      .subscribe((data:Book[])=>this.books=data)
   }
-  bucket(book: Book){
-    this.http.post('assets/user.json', book);
+  constructor(private bucketService: BucketService, private carriageService: CarriageService) {
   }
-
-
-  constructor(private carriageService: CarriageService, private http: HttpClient) { }
-
-  ngOnInit() {
-    this.loadBooks();
+  ngOnInit(){
+      this.loadBooks();
   }
 
 }
