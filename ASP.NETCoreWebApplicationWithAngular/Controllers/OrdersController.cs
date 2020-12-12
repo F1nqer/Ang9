@@ -72,6 +72,7 @@ namespace ASP.NETCoreWebApplicationWithAngular.Controllers
         [HttpPost]
         public IActionResult Post(Order order)
         {
+            order.UserId = 2;
             if (ModelState.IsValid)
             {
                 db.Orders.Add(order);

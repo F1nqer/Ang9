@@ -1,0 +1,24 @@
+<table  class="table table-striped">
+  <thead>
+  <tr>
+    <td>Город</td>
+    <td>Улица</td>
+    <td>Дом</td>
+    <td>Заказчик</td>
+    <!--    <td>Книги</td>-->
+    <td>Статус</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><input [(ngModel)]="order.city"/></td>
+    <td><input [(ngModel)]="order.city"/></td>
+    <td><input [(ngModel)]="order.homeNum"/></td>
+    <!--      <td><div *ngFor="let ob of ordersbooks"><p *ngIf="ob.orderID == p.orderID">{{ob.book.name}}</p></div></td>-->
+    <td><input [(ngModel)]="order.status"/></td>
+    <td>
+      <button class="btn btn-sm btn-primary" (click)="createOrder()">Оформить заказ</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

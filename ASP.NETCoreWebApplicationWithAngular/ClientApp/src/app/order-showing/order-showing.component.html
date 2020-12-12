@@ -1,0 +1,26 @@
+<h1>База заказов</h1>
+<table  class="table table-striped">
+  <thead>
+  <tr>
+    <td>Город</td>
+    <td>Улица</td>
+    <td>Дом</td>
+    <td>Заказчик</td>
+<!--    <td>Книги</td>-->
+    <td>Статус</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of orders">
+      <td>{{p?.city}}</td>
+      <td>{{p?.street}}</td>
+      <td>{{p?.homeNum}}</td>
+      <td>{{p?.user.username}}</td>
+<!--      <td><div *ngFor="let ob of ordersbooks"><p *ngIf="ob.orderID == p.orderID">{{ob.book.name}}</p></div></td>-->
+      <td>{{p?.status}}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="delete(p)">Удалить</button>
+      </td>
+  </tr>
+  </tbody>
+</table>

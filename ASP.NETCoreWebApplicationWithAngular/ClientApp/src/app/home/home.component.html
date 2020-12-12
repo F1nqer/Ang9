@@ -1,19 +1,17 @@
-<h1>Test working ASP.NET Core with angular</h1>
-<h2>You can use a lot of features:</h2>
-<h3>Routing</h3>
-<h3>Work in DB</h3>
-<h3>HTTP</h3>
-<h4>Good luck!</h4>
+<h1>USERS CHECK:</h1>
 <div *ngFor="let u of users">
   <p>{{u.username}} and {{u.type}}</p>
 </div>
+
 <div *ngFor="let u of orders">
-  <p>{{u.city}}</p>
+  <h3>City</h3>
+  <p>{{u.city}} books:</p>
 <!--  <p>{{u.ordersBooks[0].OrderID}}</p>-->
   <div *ngFor="let v of ordersbooks">
-    <div *ngIf="u.orderID==v.orderID"><p>{{v.book.name}}</p></div>
+    <div *ngIf="u.orderID==v.orderID"><p>Book name:{{v.book.name}}</p></div>
   </div>
 </div>
+<h1>ALL IN ORDERSBOOKS</h1>
 <div *ngFor="let ob of ordersbooks">
   <p>{{ob.book.author}}</p>
 </div>

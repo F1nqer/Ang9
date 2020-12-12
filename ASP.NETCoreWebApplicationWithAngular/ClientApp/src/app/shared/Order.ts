@@ -8,8 +8,7 @@ export class Order {
     public street: string,
     public homeNum: number,
     public status: string,
-    public user: User,
-    public books: OrdersBooks[]
+    public user: User
   ) {
   }
 }

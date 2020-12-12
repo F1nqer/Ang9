@@ -13,6 +13,7 @@ import { VagonFormComponent } from './vagon-form/vagon-form.component';
 import { BooksmarketComponent } from './booksmarket/booksmarket.component';
 import { OrderingComponent } from './ordering/ordering.component';
 import { OrderShowingComponent } from './order-showing/order-showing.component';
+import {BucketService} from "./services/books.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { OrderShowingComponent } from './order-showing/order-showing.component';
     ]),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [BucketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,14 +9,16 @@ import {BucketBook} from "../shared/BucketBook";
 
 @Component({
   selector: 'app-counter-component',
-  templateUrl: './counter.component.html',
-  providers: [BucketService]
+  templateUrl: './counter.component.html'
 })
 export class CounterComponent {
   books: BucketBook[];
   loadBucket(){
     this.bucketService.getProducts()
       .subscribe((data:BucketBook[])=>this.books = data);
+  }
+  order(){
+
   }
   constructor(private bucketService: BucketService) {
   }

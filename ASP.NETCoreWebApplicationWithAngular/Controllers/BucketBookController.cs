@@ -64,13 +64,22 @@ namespace ASP.NETCoreWebApplicationWithAngular.Controllers
         [HttpPost]
         public IActionResult Post(BucketBook book)
         {
-            if (ModelState.IsValid)
+            var bb = new BucketBook
             {
+                Name = book.Name, Author = book.Author, Description = book.Description, Price = book.Price, Count = book.Count,
+                UserId = 3
+            };
+            // if (ModelState.IsValid)
+            // {
                 book.UserId = 3;
-                db.BucketBooks.Add(book);
+                db.BucketBooks.Add(new BucketBook
+                {
+                    Name = book.Name, Author = book.Author, Description = book.Description, Price = book.Price, Count = book.Count,
+                    UserId = 3
+                });
                 db.SaveChanges();
                 return Ok(book);
-            }
+            // }
 
             return BadRequest(ModelState);
         }

@@ -3,7 +3,9 @@ import {HttpClient} from "@angular/common/http";
 import {Book} from "../shared/Book";
 import {BucketBook} from "../shared/BucketBook";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BucketService {
   private url = "/api/bucket";
   private bookurl = "/api/books"
@@ -26,9 +28,11 @@ export class BucketService {
     book.description = vagon.description;
     book.author = vagon.author;
     book.user = vagon.user;
-    book.bucketBookId = vagon.bookID;
+    book.bucketBookId = null;
     book.userId = vagon.userId;
     vagon.count = vagon.count -1;
+    console.log(vagon);
+    console.log(book);
     this.http.put(this.bookurl, vagon);
     return this.http.post(this.url, book);
   }

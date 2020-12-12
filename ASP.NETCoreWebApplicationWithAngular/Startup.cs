@@ -25,7 +25,7 @@ namespace ASP.NETCoreWebApplicationWithAngular
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services){
         // string connectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
-        string mariaConnection = "Server=127.0.0.1; User Id=root;Password=RetroLOL1;Database=bookstore3";
+        string mariaConnection = "Server=127.0.0.1; User Id=root;Password=RetroLOL1;Database=bookstore4";
             services.AddDbContext<ApplicationContext>(options => options.UseMySql(mariaConnection, new MySqlServerVersion(new Version(8, 0, 11))
                 )
             );
